@@ -17,4 +17,8 @@
     <string name="share">SHARE</string>
     <string name="plot">Plot Synopsis</string>
     <string name="review">Review</string>
+    <string name="error_textview">Sorry, there was a network error. Come back later.</string>
+    <string name="no_trailers">Sorry, no trailers. Try a different search.</string>
+    <string name="no_network">Sorry, no network.</string>
+    <string name="no_review">Sorry, no review can be found.</string>
 </resources>

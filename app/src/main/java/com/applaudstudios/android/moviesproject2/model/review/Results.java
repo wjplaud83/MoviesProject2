@@ -47,6 +47,6 @@ public class Results {
 
     @Override
     public String toString() {
-        return "Class [content = " + content + ", id = " + id + ", author = " + author + ", url = " + url + "]";
+        return "ClassPo [content = " + content + ", id = " + id + ", author = " + author + ", url = " + url + "]";
     }
 }

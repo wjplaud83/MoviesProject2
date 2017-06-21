@@ -15,7 +15,7 @@ import retrofit.http.Query;
 
 public interface MovieAPI {
 
-    // this is to fetch movies with a specific sort
+    //this method is to fetch the ALL movies with specific sort
     @GET("/3/discover/movie")
     void fetchMovies(
             @Query("sort_by") String mSort,
@@ -24,20 +24,18 @@ public interface MovieAPI {
             Callback<movieGeneral> cb
     );
 
-    @GET("/3/discover/reviews")
+    @GET("/3/movie/{id}/reviews")
     void fetchReview(
             @Query("api_key") String mApiKey,
             @Path("id") String id,
-
             Callback<movieReview> cb
     );
 
-    @GET("/3/discover/videos")
+    @GET("/3/movie/{id}/videos")
     void fetchVideos(
             @Query("api_key") String mApiKey,
             @Path("id") String id,
             Callback<movieYoutubeModel> cb
-
     );
 
 }

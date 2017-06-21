@@ -16,9 +16,9 @@ import java.util.List;
  */
 
 public class favoriteSqliteHelper extends SQLiteOpenHelper {
-    public static final String KEY_ID = "id";
+    public static final String KEY_ROWID = "id";
     public static final String KEY_THUMBNAIL = "mThumbnail";
-    public static final String KEY_VOTE = "mVote";
+    public static final String KEY_MVOTE = "mVote";
     public static final String KEY_TITLE = "mTitle";
     public static final String KEY_PEOPLE = "mPeople";
     public static final String KEY_RELEASEDATE = "mReleaseDate";
@@ -28,11 +28,11 @@ public class favoriteSqliteHelper extends SQLiteOpenHelper {
     private static final String LOG_TAG = "moviesDB";
     private static final String DATABASE_CREATE =
             "CREATE TABLE if not exists " + SQLITE_TABLE + " (" +
-                    KEY_ID + " integer PRIMARY KEY," +
+                    KEY_ROWID + " integer PRIMARY KEY," +
                     KEY_THUMBNAIL + "," +
                     KEY_TITLE + "," +
                     KEY_PEOPLE + "," +
-                    KEY_VOTE + "," +
+                    KEY_MVOTE + "," +
                     KEY_OVERVIEW + "," +
                     KEY_REVIEW + "," +
                     KEY_RELEASEDATE + "" +
@@ -57,11 +57,11 @@ public class favoriteSqliteHelper extends SQLiteOpenHelper {
     public boolean insertMovie(movieGeneralModel movieGeneralModels) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, Integer.parseInt(movieGeneralModels.getmId()));
+        values.put(KEY_ROWID, Integer.parseInt(movieGeneralModels.getmId()));
         values.put(KEY_THUMBNAIL, movieGeneralModels.getThumbnail());
         values.put(KEY_TITLE, movieGeneralModels.getTitle());
         values.put(KEY_PEOPLE, movieGeneralModels.getmPeople());
-        values.put(KEY_VOTE, movieGeneralModels.getmVote());
+        values.put(KEY_MVOTE, movieGeneralModels.getmVote());
         values.put(KEY_OVERVIEW, movieGeneralModels.getmOverview());
         values.put(KEY_RELEASEDATE, movieGeneralModels.getmReleaseDate());
         values.put(KEY_REVIEW, movieGeneralModels.getmReview());

@@ -141,9 +141,9 @@ public class movieDetailFragment extends Fragment {
         }
         boolean b = db.insertMovie(moviegeneralModel);
         if (b)
-            Toast.makeText(getContext(), "Added to Favourites", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Added to Favorites", Toast.LENGTH_LONG).show();
         else
-            Toast.makeText(getContext(), "Seems Already in Favourites!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Seems Already in Favorites!", Toast.LENGTH_LONG).show();
     }
 
     protected void shareYoutubeIntent(String shareYoutubeID) {
@@ -215,7 +215,7 @@ public class movieDetailFragment extends Fragment {
                             30
                     );
                     errmsg.setLayoutParams(params);
-                    errmsg.setText("That's Bad Luck,No Trailers Found!Check later");
+                    errmsg.setText("@string/no_trailers");
                     youtubeViewHolder.addView(errmsg);
                 }
             }
@@ -229,7 +229,7 @@ public class movieDetailFragment extends Fragment {
                         30
                 );
                 errmsg.setLayoutParams(params);
-                errmsg.setText("Network Error! You can't view Trailers Rite Now");
+                errmsg.setText("@+string/no_network");
                 youtubeViewHolder.addView(errmsg);
 
             }
@@ -246,14 +246,14 @@ public class movieDetailFragment extends Fragment {
                 if (movieResult.length > 0)
                     ((TextView) review).setText(movieResult[0].getContent());
                 else
-                    ((TextView) review).setText("Sorry No Review is Available Till Now!");
+                    ((TextView) review).setText("@string/no_review");
 
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Log.d("error", error.toString());
-                ((TextView) review).setText("Sorry! Check Back Latter! Network Error!");
+                ((TextView) review).setText("@string/no_network");
             }
         });
     }
