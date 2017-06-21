@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class favoriteSqliteHelper extends SQLiteOpenHelper {
-    public static final String KEY_ROWID = "id";
+    public static final String KEY_ID = "id";
     public static final String KEY_THUMBNAIL = "mThumbnail";
     public static final String KEY_MVOTE = "mVote";
     public static final String KEY_TITLE = "mTitle";
@@ -28,7 +28,7 @@ public class favoriteSqliteHelper extends SQLiteOpenHelper {
     private static final String LOG_TAG = "moviesDB";
     private static final String DATABASE_CREATE =
             "CREATE TABLE if not exists " + SQLITE_TABLE + " (" +
-                    KEY_ROWID + " integer PRIMARY KEY," +
+                    KEY_ID + " integer PRIMARY KEY," +
                     KEY_THUMBNAIL + "," +
                     KEY_TITLE + "," +
                     KEY_PEOPLE + "," +
@@ -57,7 +57,7 @@ public class favoriteSqliteHelper extends SQLiteOpenHelper {
     public boolean insertMovie(movieGeneralModel movieGeneralModels) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ROWID, Integer.parseInt(movieGeneralModels.getmId()));
+        values.put(KEY_ID, Integer.parseInt(movieGeneralModels.getmId()));
         values.put(KEY_THUMBNAIL, movieGeneralModels.getThumbnail());
         values.put(KEY_TITLE, movieGeneralModels.getTitle());
         values.put(KEY_PEOPLE, movieGeneralModels.getmPeople());

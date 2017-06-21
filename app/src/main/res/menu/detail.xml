@@ -4,6 +4,6 @@
     <item
         android:id="@+id/fav"
         android:icon="@drawable/ic_launcher"
-        android:title="favourite"
+        android:title="favorite"
         app:showAsAction="ifRoom" />
 </menu>

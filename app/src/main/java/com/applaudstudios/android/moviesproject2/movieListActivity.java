@@ -14,13 +14,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.applaudstudios.android.moviesproject2.adapter.movieGeneralAdapter;
-import com.applaudstudios.android.moviesproject2.adapter.movieGeneralHolder;
 import com.applaudstudios.android.moviesproject2.constants.constant;
 import com.applaudstudios.android.moviesproject2.database.favoriteSqliteHelper;
 import com.applaudstudios.android.moviesproject2.model.Results;
@@ -47,7 +45,7 @@ public class movieListActivity extends AppCompatActivity {
     View recyclerView;
     private AlertDialog choice;
     private String FLAG_CURRENT = MOST_POPULAR;
-    private String FLAG_FAV = "FAVOURITE";
+    private String FLAG_FAV = "FAVORITE";
     private TextView errorTextView;
     private ImageView errorImageview;
     /**
@@ -128,9 +126,9 @@ public class movieListActivity extends AppCompatActivity {
 
     protected void FetchFavourites(@NonNull final RecyclerView recyclerView) {
         favoriteSqliteHelper db = new favoriteSqliteHelper(getApplicationContext());
-        List<movieGeneralModel> movieGeneralModals = db.getAllMovies();
-        if (movieGeneralModals.size() > 0)
-            attachAdapter(recyclerView, movieGeneralModals);
+        List<movieGeneralModel> movieGeneralModels = db.getAllMovies();
+        if (movieGeneralModels.size() > 0)
+            attachAdapter(recyclerView, movieGeneralModels);
         else {
             Toast.makeText(getApplicationContext(), "It seems No Favourites! check back Later", Toast.LENGTH_LONG).show();
         }
@@ -176,22 +174,7 @@ public class movieListActivity extends AppCompatActivity {
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
         FragmentManager fm = getSupportFragmentManager();
-        movieGeneralAdapter mMovieGeneralAdapter = new movieGeneralAdapter(getApplicationContext(), movieGeneralModels, mTwoPane, fm) {
-            @Override
-            public movieGeneralHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return null;
-            }
-
-            @Override
-            public void onBindViewHolder(movieGeneralHolder holder, int position) {
-
-            }
-
-            @Override
-            public int getItemCount() {
-                return 0;
-            }
-        };
+        movieGeneralAdapter mMovieGeneralAdapter = new movieGeneralAdapter(getApplicationContext(), movieGeneralModels, mTwoPane, fm);
         rView.setAdapter(mMovieGeneralAdapter);
 
     }
@@ -216,7 +199,7 @@ public class movieListActivity extends AppCompatActivity {
 
         errorImageview.setVisibility(View.INVISIBLE);
         errorTextView.setVisibility(View.INVISIBLE);
-        errorTextView.setText("Sorry!Network Error! check back Later");
+        errorTextView.setText("Sorry, there has been a Network Error.");
 
         FLAG_CURRENT = temp;
         if (FLAG_CURRENT != FLAG_FAV) {
