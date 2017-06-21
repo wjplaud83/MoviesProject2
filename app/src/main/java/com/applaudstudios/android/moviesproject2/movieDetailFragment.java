@@ -145,12 +145,13 @@ public class movieDetailFragment extends Fragment {
         else
             Toast.makeText(getContext(), "Seems Already in Favourites!", Toast.LENGTH_LONG).show();
     }
+
     protected void shareYoutubeIntent(String shareYoutubeID) {
         String url = "http://www.youtube.com/watch?v" + shareYoutubeID;
-        String shareMsg = "hey,there new film named " + moviegeneralModel.getTitle() + " has been released and here is the Trailer link,Have a look at it " + url;
+        String shareMsg = "hey,there is a new film named " + moviegeneralModel.getTitle() + " has been released and here is the Trailer link. Take a look at it at: " + url;
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Movies Now - Android App");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Movies Project2 - Android App");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareMsg);
         startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
     }
@@ -175,7 +176,6 @@ public class movieDetailFragment extends Fragment {
         MovieAPI mMovieAPI = NetworkAPI.createService(MovieAPI.class);
         mMovieAPI.fetchVideos(constant.API_KEY, this.moviegeneralModel.getmId(), new Callback<movieYoutubeModel>() {
 
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void success(movieYoutubeModel movieYoutubeModel, Response response) {
                 youtubeViewHolder.setPadding(5, 10, 5, 0);
@@ -220,7 +220,6 @@ public class movieDetailFragment extends Fragment {
                 }
             }
 
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void failure(RetrofitError error) {
                 youtubeViewHolder.setPadding(50, 50, 50, 50);
@@ -262,6 +261,7 @@ public class movieDetailFragment extends Fragment {
     protected void generateThumbnail() {
 
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -124,13 +124,13 @@ public class movieListActivity extends AppCompatActivity {
                 .show();
     }
 
-    protected void FetchFavourites(@NonNull final RecyclerView recyclerView) {
+    protected void FetchFavorites(@NonNull final RecyclerView recyclerView) {
         favoriteSqliteHelper db = new favoriteSqliteHelper(getApplicationContext());
         List<movieGeneralModel> movieGeneralModels = db.getAllMovies();
         if (movieGeneralModels.size() > 0)
             attachAdapter(recyclerView, movieGeneralModels);
         else {
-            Toast.makeText(getApplicationContext(), "It seems No Favourites! check back Later", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "There are no Favorites! Please check back Later", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -199,7 +199,7 @@ public class movieListActivity extends AppCompatActivity {
 
         errorImageview.setVisibility(View.INVISIBLE);
         errorTextView.setVisibility(View.INVISIBLE);
-        errorTextView.setText("Sorry, there has been a Network Error.");
+        errorTextView.setText("Sorry, there has been a Network Error! Check back Later");
 
         FLAG_CURRENT = temp;
         if (FLAG_CURRENT != FLAG_FAV) {
@@ -218,7 +218,7 @@ public class movieListActivity extends AppCompatActivity {
                 }
             });
         } else {
-            FetchFavourites(recyclerView);
+            FetchFavorites(recyclerView);
         }
     }
 
